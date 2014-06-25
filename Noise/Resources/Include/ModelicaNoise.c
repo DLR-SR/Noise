@@ -3,38 +3,24 @@
 #ifndef NOISECLIB
 #define NOISECLIB
 
-
-#define VOID void
-typedef char CHAR;
-typedef short SHORT;
-typedef long LONG;
-typedef unsigned char    u_char;
-typedef unsigned short   u_short;
-typedef unsigned int     u_int;
-typedef unsigned __int32 u_int32;
-typedef unsigned long    u_long;
-typedef unsigned __int64 u_int64;
-#include <stdio.h>
+#include <stdint.h>
 #include <limits.h>
-#include  "ModelicaUtilities.h"
-#include <windows.h>
 #include <math.h>
-
 
 // NOISE_SeedReal
 // Converts a Real variable to an Integer seed
 void NOISE_SeedReal(int local_seed, int global_seed, double real_seed, int n, int* states)
 {
   double   x0;
-  u_int32* xp;
-  u_int32  x1;
-  u_int32  x2;
+  uint32_t* xp;
+  uint32_t  x1;
+  uint32_t  x2;
   int      i;
 
   // Take the square root in order to remove sampling effects
   x0 = sqrt(real_seed);
   // Point a 32 bit integer to the double number
-  xp = (u_int32*)&x0;
+  xp = (uint32_t*)&x0;
   // Interpret the first 32 bits as an integer
   x1 = *xp;
   x2 = *xp;
@@ -44,8 +30,8 @@ void NOISE_SeedReal(int local_seed, int global_seed, double real_seed, int n, in
   x2 ^= *xp;
 
   // Use the seeds to bit-wier XOR them to the two integers
-  x1 ^= (u_int32)local_seed;
-  x2 ^= (u_int32)global_seed;
+  x1 ^= (uint32_t)local_seed;
+  x2 ^= (uint32_t)global_seed;
 
   // Fill the states vector
   for (i = 0; i < n; i++){
@@ -56,20 +42,19 @@ void NOISE_SeedReal(int local_seed, int global_seed, double real_seed, int n, in
 
 // NOISE_shuffleDouble
 // This is the basic implementation of the DIRCS random number generator
-double NOISE_shuffleDouble(double x, u_int32 seed)
+double NOISE_shuffleDouble(double x, uint32_t seed)
 {
   double   x0;
-  u_int32* xp;
-  u_int32  x1;
-  u_int32  x2;
-  u_int32  xt;
+  uint32_t* xp;
+  uint32_t  x1;
+  uint32_t  x2;
   double   vmax;
   double   y;
 
   // Take the square root in order to remove sampling effects
   x0 = sqrt(x);
   // Point a 32 bit integer to the double number
-  xp = (u_int32*)&x0;
+  xp = (uint32_t*)&x0;
   // Interpret the first 32 bits as an integer
   x1 = *xp;
   x2 = *xp;
@@ -84,7 +69,7 @@ double NOISE_shuffleDouble(double x, u_int32 seed)
   x2 = x2*134775813 + 1;
 
   // Do combined steps!
-  xt = x2; x2 = x1*134775813 + x2*134775813 + 1; x1 = x2;
+  x2 = x1*134775813 + x2*134775813 + 1;
 
   // Divide the integer by its maximum value
   vmax =  UINT_MAX;
