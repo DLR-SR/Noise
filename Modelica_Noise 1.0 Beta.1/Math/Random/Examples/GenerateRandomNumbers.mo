@@ -49,7 +49,7 @@ algorithm
     iImpure := Random.Utilities.impureRandomInteger(id=id, imin=-1234, imax=2345);
   end when;
 
-  annotation (experiment(StopTime=2), Documentation(info="<html>
+  annotation (experiment(StopTime=2), preferredView="text", Documentation(info="<html>
 <p>
 This example demonstrates how to utilize the random number generators
 of package <a href=\"Modelica_Noise.Math.Random.Generators\">Math.Random.Generators</a> in a Modelica model.
