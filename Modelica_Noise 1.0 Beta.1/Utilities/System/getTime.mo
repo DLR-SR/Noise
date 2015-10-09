@@ -7,8 +7,8 @@ function getTime "Retrieves the local time (in the local time zone)"
   output Integer day "Day";
   output Integer mon "Month";
   output Integer year "Year";
-  external "C" ModelicaRandom_getTime(ms,sec,min,hour,day,mon,year)
-    annotation (Include = "#include \"ModelicaRandom.c\"");
+  external "C" ModelicaInternal_getTime(ms,sec,min,hour,day,mon,year)
+    annotation(Library="ModelicaExternalC");
   annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

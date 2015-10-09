@@ -93,7 +93,7 @@ and the returned state is the one from the last iteration.
   "Returns a uniform random number with the xorshift64* algorithm"
     extends Interfaces.random(final stateSize=Xorshift64star.nState);
     external "C" ModelicaRandom_xorshift64star(stateIn, stateOut, result)
-      annotation (Include = "#include \"ModelicaRandom.c\"");
+      annotation (Library="ModelicaExternalC");
     annotation(Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

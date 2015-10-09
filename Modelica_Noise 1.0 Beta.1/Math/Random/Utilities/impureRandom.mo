@@ -6,7 +6,7 @@ function impureRandom
   output Real y
     "A random number with a uniform distribution on the interval (0,1]";
   external "C" y = ModelicaRandom_impureRandom_xorshift1024star(id)
-    annotation (Include = "#include \"ModelicaRandom.c\"");
+    annotation (Library="ModelicaExternalC");
   annotation(Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

@@ -70,7 +70,7 @@ random number generator is used to fill the internal state vector with 64 bit ra
   "Returns a uniform random number with the xorshift1024* algorithm"
     extends Interfaces.random(final stateSize=Xorshift1024star.nState);
     external "C" ModelicaRandom_xorshift1024star(stateIn, stateOut, result)
-      annotation (Include = "#include \"ModelicaRandom.c\"");
+      annotation (Library="ModelicaExternalC");
     annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
