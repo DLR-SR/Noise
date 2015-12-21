@@ -82,6 +82,8 @@
 #       define ModelicaRandom_HAVE_STDINT_H 1
 #   elif defined(__WATCOMC__)
 #       define ModelicaRandom_HAVE_STDINT_H 1
+#   elif defined(__GNUC__)
+#       define ModelicaRandom_HAVE_STDINT_H 1
 #   else
 #       undef ModelicaRandom_HAVE_STDINT_H
 #   endif
@@ -204,7 +206,12 @@ static void deleteCS(void) {
 #   include <sys/time.h>
 #endif
 #   include <time.h>
+#if defined(__GNUC__)
+#include <unistd.h>
+#   define ModelicaRandom_getpid getpid
+#else
 #   define ModelicaRandom_getpid _getpid
+#endif
 static void ModelicaRandom_getTime(int* ms, int* sec, int* min, int* hour, int* mday, int* mon, int* year) {
     struct tm* tlocal;
     time_t calendarTime;
