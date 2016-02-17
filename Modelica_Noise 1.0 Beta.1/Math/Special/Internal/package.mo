@@ -1,6 +1,6 @@
 within Modelica_Noise.Math.Special;
 package Internal "Internal utility functions that should not be directly utilized by the user"
-   extends Modelica.Icons.InternalPackage;
+  extends Modelica.Icons.InternalPackage;
 
 
 

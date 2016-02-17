@@ -1,7 +1,7 @@
 within Modelica_Noise.Math.Special.Internal;
-function erfcUtil "erfc(z) for 0.5 <= z "
+function erfcUtil "Evaluate erfc(z) for 0.5 <= z "
    input Real z "Input argument 0.5 <= z required (but not checked)";
-   output Real y "erfc(z) for 0.5 <= z";
+   output Real y "Result erfc(z) for 0.5 <= z";
 protected
    constant Real y1 = 0.405935764312744140625;
    constant Real P1[6] = {-0.098090592216281240205,

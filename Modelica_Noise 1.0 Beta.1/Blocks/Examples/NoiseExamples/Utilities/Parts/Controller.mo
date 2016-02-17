@@ -3,9 +3,9 @@ model Controller "Simple position controller for actuator"
 
   Modelica.Blocks.Continuous.PI speed_PI(k=10, T=5e-2,
     initType=Modelica.Blocks.Types.Init.InitialOutput)
-    annotation (Placement(transformation(extent={{38,-10},{58,10}})));
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Math.Feedback speedFeedback
-    annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
   Modelica.Blocks.Continuous.Derivative positionToSpeed(initType=Modelica.Blocks.Types.Init.InitialOutput,
       T=0.01)
     annotation (Placement(transformation(extent={{-60,-70},{-40,-50}})));
@@ -22,10 +22,10 @@ model Controller "Simple position controller for actuator"
   Modelica.Blocks.Math.Feedback positionFeedback
     annotation (Placement(transformation(extent={{-90,50},{-70,70}})));
   Modelica.Blocks.Continuous.FirstOrder busdelay(T=1e-3, initType=Modelica.Blocks.Types.Init.InitialOutput)
-    annotation (Placement(transformation(extent={{68,-10},{88,10}})));
+    annotation (Placement(transformation(extent={{60,-10},{80,10}})));
 equation
   connect(speedFeedback.y, speed_PI.u) annotation (Line(
-      points={{29,0},{36,0}},
+      points={{-1,0},{14,0},{18,0}},
       color={0,0,127}));
   connect(positionFeedback.u2, positionToSpeed.u) annotation (Line(
       points={{-80,52},{-80,-60},{-62,-60}},
@@ -37,19 +37,19 @@ equation
       points={{-71,60},{-62,60}},
       color={0,0,127}));
   connect(position_PI.y, speedFeedback.u1) annotation (Line(
-      points={{-39,60},{0,60},{0,0},{12,0}},
+      points={{-39,60},{-30,60},{-30,0},{-18,0}},
       color={0,0,127}));
   connect(speed_PI.y, busdelay.u) annotation (Line(
-      points={{59,0},{66,0}},
+      points={{41,0},{58,0}},
       color={0,0,127}));
   connect(y1, busdelay.y) annotation (Line(
-      points={{110,0},{89,0}},
+      points={{110,0},{81,0}},
       color={0,0,127}));
   connect(positionMeasured, positionToSpeed.u) annotation (Line(
       points={{-120,-60},{-62,-60}},
       color={0,0,127}));
   connect(positionToSpeed.y, speedFeedback.u2) annotation (Line(
-      points={{-39,-60},{20,-60},{20,-8}},
+      points={{-39,-60},{-10,-60},{-10,-8}},
       color={0,0,127}));
   annotation ( Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={

@@ -5,7 +5,7 @@ package Utilities "Library of utility models used in the examples"
 
 annotation (Documentation(info="<html>
 <p>
-This package contains utility models that are used for the examples.
+This package contains utility models that are used for the examples of noise blocks.
 </p>
 </html>", revisions="<html>
 <p>

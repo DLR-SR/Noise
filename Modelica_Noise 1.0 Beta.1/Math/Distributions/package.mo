@@ -1,6 +1,6 @@
 within Modelica_Noise.Math;
 package Distributions "Library of distribution functions"
-   extends Modelica.Icons.Package;
+  extends Modelica.Icons.Package;
 
 
 
@@ -8,7 +8,7 @@ package Distributions "Library of distribution functions"
 
 
 
-annotation (Icon(graphics={Line(
+  annotation (Icon(graphics={Line(
           points={{-70,-65.953},{-66.5,-65.8975},{-63,-65.7852},{-59.5,
           -65.5674},{-56,-65.1631},{-52.5,-64.4442},{-49,-63.2213},{-45.5,
           -61.2318},{-42,-58.1385},{-38.5,-53.5468},{-35,-47.0467},{-31.5,

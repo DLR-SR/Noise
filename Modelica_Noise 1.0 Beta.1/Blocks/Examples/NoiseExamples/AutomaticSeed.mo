@@ -3,7 +3,7 @@ model AutomaticSeed
   "Demonstrates noise with startTime and automatic local seed for UniformNoise"
   import Modelica_Noise;
    extends Modelica.Icons.Example;
-   parameter Real startTime = 0.5 "Start time of noise";
+   parameter Modelica.SIunits.Time startTime = 0.5 "Start time of noise";
    parameter Real y_off = -1.0 "Output of block before startTime";
 
   inner Modelica_Noise.Blocks.Noise.GlobalSeed globalSeed(useAutomaticSeed=false, enableNoise=true)

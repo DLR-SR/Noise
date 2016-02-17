@@ -2,11 +2,11 @@ within Modelica_Noise.Blocks.Examples.NoiseExamples;
 model ActuatorWithNoise
   "Demonstrates how to model measurement noise in an actuator"
 extends Modelica.Icons.Example;
-  Utilities.Parts.MotorWithCurrentControl Motor
+  Utilities.Parts.MotorWithCurrentControl motor
     annotation (Placement(transformation(extent={{-86,-10},{-66,10}})));
   Utilities.Parts.Controller controller
     annotation (Placement(transformation(extent={{0,60},{20,80}})));
-  Modelica.Blocks.Sources.Step     Speed(startTime=0.5, height=50)
+  Modelica.Blocks.Sources.Step speed(startTime=0.5, height=50)
     annotation (Placement(transformation(extent={{-72,66},{-52,86}})));
   Modelica.Mechanics.Rotational.Components.Gearbox gearbox(
     lossTable=[0,0.85,0.8,0.1,0.1],
@@ -37,20 +37,20 @@ extends Modelica.Icons.Example;
   inner Noise.GlobalSeed globalSeed(enableNoise=true)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 equation
-  connect(controller.y1, Motor.iq_rms1) annotation (Line(
+  connect(controller.y1, motor.iq_rms1) annotation (Line(
       points={{21,70},{30,70},{30,20},{-96,20},{-96,6},{-88,6}},
       color={0,0,127}));
-  connect(Motor.phi, controller.positionMeasured) annotation (Line(
-      points={{-71,8},{-66,8},{-66,52},{-12,52},{-12,64},{-2,64},{-2,64}},
+  connect(motor.phi, controller.positionMeasured) annotation (Line(
+      points={{-71,8},{-66,8},{-66,52},{-12,52},{-12,64},{-2,64}},
       color={0,0,127}));
-  connect(Motor.flange, gearbox.flange_a) annotation (Line(
+  connect(motor.flange, gearbox.flange_a) annotation (Line(
       points={{-66,0},{-60,0}}));
   connect(gearbox.flange_b, idealGearR2T.flangeR) annotation (Line(
       points={{-40,0},{-32,0}}));
   connect(constantForce.flange, mass.flange_b) annotation (Line(
       points={{76,0},{70,0}},
       color={0,127,0}));
-  connect(Speed.y, slewRateLimiter.u) annotation (Line(
+  connect(speed.y, slewRateLimiter.u) annotation (Line(
       points={{-51,76},{-42,76}},
       color={0,0,127}));
   connect(slewRateLimiter.y, controller.positionReference) annotation (Line(
@@ -69,7 +69,7 @@ equation
     experiment(StopTime=8, Interval = 0.01, Tolerance=1e-005),
     Documentation(info="<html>
 <p>
-This example models an actuator with a noisy sensor (which is in the Motor component):
+This example models an actuator with a noisy sensor (which is in the motor component):
 </p>
 
 <blockquote>
@@ -78,21 +78,21 @@ This example models an actuator with a noisy sensor (which is in the Motor compo
 </p></blockquote>
 
 <p>
-The drive train consists of a synchronous motor with a current controller (= Motor) and a gear box.
+The drive train consists of a synchronous motor with a current controller (= motor) and a gear box.
 The gearbox drives a rod through a linear translation model. Softly attached to the rod is
 another mass representing the actual actuator (= mass). The actuator is loaded with a constant force.
 </p>
 
 <p>
 The whole drive is steered by a rate limited speed step command through a controller model.
-In the Motor the shaft angle is measured and this measurement signal is modelled by adding
-additive noise to the Motor angle.
+In the motor the shaft angle is measured and this measurement signal is modelled by adding
+additive noise to the motor angle.
 </p>
 
 <p>
-In the following figure, the position of the actuator and the Motor output torque are
+In the following figure, the position of the actuator and the motor output torque are
 shown with and without noise. The noise is not very strong, such that it has no visible effect
-on the position of the actuator. The effect of the noise can be seen in the Motor torque.
+on the position of the actuator. The effect of the noise can be seen in the motor torque.
 </p>
 
 <blockquote><p>

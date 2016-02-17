@@ -10,7 +10,7 @@ algorithm
   end for;
  annotation (Documentation(info="<html>
 <p>
-Evaluate a polynomial using Horner's scheme.
+Evaluate a polynomial for given abscissa using time efficient Horner&apos;s scheme.
 </p>
 </html>",
        revisions="<html>

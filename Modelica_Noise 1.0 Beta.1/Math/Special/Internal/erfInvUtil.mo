@@ -2,7 +2,7 @@ within Modelica_Noise.Math.Special.Internal;
 function erfInvUtil "Utility function for erfInv(u) and erfcInv(u)"
   input Real p "First input argument";
   input Real q "Second input argument";
-  output Real y "Reault value";
+  output Real y "Result value";
 
 protected
    Real g;

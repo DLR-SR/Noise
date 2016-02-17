@@ -1,9 +1,9 @@
 within Modelica_Noise.Math;
 package Special "Library of special mathematical functions"
-   extends Modelica.Icons.Package;
+  extends Modelica.Icons.Package;
 
 
-annotation (Icon(graphics={Line(
+  annotation (Icon(graphics={Line(
       points={{-80,-80},{-20,-80},{20,80},{80,80}},
       smooth=Smooth.Bezier)}), Documentation(info="<html>
 <p>
