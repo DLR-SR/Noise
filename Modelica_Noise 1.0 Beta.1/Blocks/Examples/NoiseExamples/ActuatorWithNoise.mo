@@ -5,9 +5,9 @@ extends Modelica.Icons.Example;
   Utilities.Parts.MotorWithCurrentControl motor
     annotation (Placement(transformation(extent={{-86,-10},{-66,10}})));
   Utilities.Parts.Controller controller
-    annotation (Placement(transformation(extent={{0,60},{20,80}})));
+    annotation (Placement(transformation(extent={{-60,40},{-80,60}})));
   Modelica.Blocks.Sources.Step speed(startTime=0.5, height=50)
-    annotation (Placement(transformation(extent={{-72,66},{-52,86}})));
+    annotation (Placement(transformation(extent={{20,40},{0,60}})));
   Modelica.Mechanics.Rotational.Components.Gearbox gearbox(
     lossTable=[0,0.85,0.8,0.1,0.1],
     c=1e6,
@@ -26,7 +26,7 @@ extends Modelica.Icons.Example;
         extent={{10,-10},{-10,10}},
         origin={86,0})));
   Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter(Rising=50)
-    annotation (Placement(transformation(extent={{-40,66},{-20,86}})));
+    annotation (Placement(transformation(extent={{-20,40},{-40,60}})));
   Modelica.Mechanics.Translational.Components.Mass rodMass(m=3)
     annotation (Placement(transformation(extent={{-4,-10},{16,10}})));
   Modelica.Mechanics.Translational.Components.SpringDamper elastoGap(c=1e8, d=
@@ -38,10 +38,10 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 equation
   connect(controller.y1, motor.iq_rms1) annotation (Line(
-      points={{21,70},{30,70},{30,20},{-96,20},{-96,6},{-88,6}},
+      points={{-81,50},{-94,50},{-94,6},{-88,6}},
       color={0,0,127}));
   connect(motor.phi, controller.positionMeasured) annotation (Line(
-      points={{-71,8},{-66,8},{-66,52},{-12,52},{-12,64},{-2,64}},
+      points={{-71,8},{-66,8},{-66,20},{-50,20},{-50,44},{-58,44}},
       color={0,0,127}));
   connect(motor.flange, gearbox.flange_a) annotation (Line(
       points={{-66,0},{-60,0}}));
@@ -51,10 +51,10 @@ equation
       points={{76,0},{70,0}},
       color={0,127,0}));
   connect(speed.y, slewRateLimiter.u) annotation (Line(
-      points={{-51,76},{-42,76}},
+      points={{-1,50},{-18,50}},
       color={0,0,127}));
   connect(slewRateLimiter.y, controller.positionReference) annotation (Line(
-      points={{-19,76},{-2,76}},
+      points={{-41,50},{-50,50},{-50,56},{-58,56}},
       color={0,0,127}));
   connect(rodMass.flange_a, idealGearR2T.flangeT) annotation (Line(
       points={{-4,0},{-12,0}},
