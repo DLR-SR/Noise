@@ -1,9 +1,17 @@
 within Modelica_Noise.Blocks;
-package Examples 
+package Examples "Collection of simulatable models involving blocks"
   extends Modelica.Icons.ExamplesPackage;
 
 
-annotation (Documentation(revisions="<html>
+
+  annotation (
+    Documentation(
+      info="<html>
+<p>
+This package contains examples demonstrating the usage of the blocks for noise generation.
+</p>
+</html>",
+      revisions="<html>
 <p>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>

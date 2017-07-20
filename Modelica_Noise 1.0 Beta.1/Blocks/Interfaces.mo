@@ -1,5 +1,6 @@
 within Modelica_Noise.Blocks;
-package Interfaces
+package Interfaces "Collection of interface definitions for noise blocks"
+  extends Modelica.Icons.InterfacesPackage;
 
   partial block PartialNoise "Partial noise generator"
     import generator = Modelica_Noise.Math.Random.Generators.Xorshift128plus;
@@ -16,7 +17,7 @@ package Interfaces
       "=true: y = noise, otherwise y = y_off"
       annotation(choices(checkBox=true),Dialog(tab="Advanced",group="Noise generation"));
     parameter Real y_off = 0.0
-      "y = y_off if enableNoise=false (or time<startTime, see below)"
+      "Output y = y_off if enableNoise=false (or time<startTime, see below)"
       annotation(Dialog(tab="Advanced",group="Noise generation"));
 
     // Advanced dialog menu: Initialization
@@ -132,4 +133,7 @@ of noise blocks.
 </p>
 </html>"));
   end PartialNoise;
+  annotation (Documentation(info="<html>
+<p>This package provides general interface definitions for noise blocks.</p>
+</html>"));
 end Interfaces;

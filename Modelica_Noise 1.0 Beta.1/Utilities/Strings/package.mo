@@ -1,6 +1,17 @@
 within Modelica_Noise.Utilities;
-package Strings
-annotation (Documentation(revisions="<html>
+package Strings "Operations on strings"
+  extends Modelica.Icons.Package;
+
+
+
+  annotation (
+    Documentation(
+      info="<html>
+<p>
+This package contains functions to manipulate strings and complement the standard package <a href=\"modelica://Modelica.Utilities.Strings\">Modelica.Utilities.Strings</a>.
+</p>
+</html>",
+      revisions="<html>
 <p>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>

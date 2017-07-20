@@ -4,6 +4,7 @@ function hashString "Creates a hash value of a String"
   output Integer hash "The hash value of string";
   external "C" hash = ModelicaRandom_hashString(string)
     annotation (Include = "#include \"ModelicaRandom.c\"");
+
   annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>

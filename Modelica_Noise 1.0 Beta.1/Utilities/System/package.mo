@@ -1,8 +1,18 @@
 within Modelica_Noise.Utilities;
-package System
+package System "Interaction with environment"
+  extends Modelica.Icons.Package;
 
 
-annotation (Documentation(revisions="<html>
+
+
+  annotation (
+    Documentation(
+      info="<html>
+<p>
+This package contains functions to interact with the environment and complement the standard package <a href=\"modelica://Modelica.Utilities.System\">Modelica.Utilities.System</a>.
+</p>
+</html>",
+      revisions="<html>
 <p>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>

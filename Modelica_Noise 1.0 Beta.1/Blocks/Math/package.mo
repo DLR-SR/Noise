@@ -3,7 +3,8 @@ package Math "Library of mathematical blocks"
   extends Modelica.Icons.Package;
 
 
-  annotation (Icon(graphics={Line(
+  annotation (
+    Icon(graphics={Line(
           points={{-72,-63.953},{-68.5,-63.8975},{-65,-63.7852},{-61.5,
           -63.5674},{-58,-63.1631},{-54.5,-62.4442},{-51,-61.2213},{-47.5,
           -59.2318},{-44,-56.1385},{-40.5,-51.5468},{-37,-45.0467},{-33.5,
@@ -15,7 +16,11 @@ package Math "Library of mathematical blocks"
           -56.1385},{43.5,-59.2318},{47,-61.2213},{50.5,-62.4442},{54,
           -63.1631},{57.5,-63.5674},{61,-63.7852},{64.5,-63.8975},{68,
           -63.953}},
-          smooth=Smooth.Bezier)}), Documentation(info="<html>
+          smooth=Smooth.Bezier)}),
+    Documentation(info="<html>
+<p>
+This package contains <b>mathematical blocks</b> used in context with noise modeling.
+</p>
 </html>", revisions="<html>
 <p>
 <table border=1 cellspacing=0 cellpadding=2>
