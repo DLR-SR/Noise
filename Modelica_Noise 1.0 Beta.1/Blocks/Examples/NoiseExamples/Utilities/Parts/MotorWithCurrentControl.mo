@@ -40,7 +40,7 @@ model MotorWithCurrentControl
     alpha20s=smpmData.alpha20s,
     TrOperational=293.15,
     alpha20r=smpmData.alpha20r)
-    annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
+    annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
   Modelica.Electrical.MultiPhase.Sources.SignalCurrent signalCurrent(final m=m)
     annotation (Placement(transformation(
         origin={-10,50},
@@ -65,11 +65,10 @@ model MotorWithCurrentControl
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Machines.Utilities.TerminalBox terminalBox(
-      terminalConnection="Y") annotation (Placement(transformation(extent={{-20,-30},
-            {0,-10}})));
+      terminalConnection="Y") annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   Modelica.Electrical.Machines.Sensors.RotorDisplacementAngle rotorDisplacementAngle(p=smpm.p)
     annotation (Placement(transformation(
-        origin={20,-40},
+        origin={30,-50},
         extent={{-10,10},{10,-10}},
         rotation=270)));
   Modelica.Mechanics.Rotational.Sensors.AngleSensor angleSensor annotation (
@@ -81,12 +80,12 @@ model MotorWithCurrentControl
       Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={50,-40})));
+        origin={50,-20})));
   Modelica.Mechanics.Rotational.Sensors.SpeedSensor speedSensor annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={30,0})));
+        origin={30,-2})));
   Modelica.Electrical.Machines.Sensors.VoltageQuasiRMSSensor voltageQuasiRMSSensor
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -94,15 +93,15 @@ model MotorWithCurrentControl
         origin={-30,-10})));
   Modelica.Electrical.Machines.Sensors.CurrentQuasiRMSSensor currentQuasiRMSSensor
     annotation (Placement(transformation(
-        origin={-10,0},
+        origin={-10,10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Mechanics.Rotational.Components.Inertia inertiaLoad(J=0.29)
-    annotation (Placement(transformation(extent={{70,-50},{90,-30}})));
+    annotation (Placement(transformation(extent={{70,-30},{90,-10}})));
   parameter
     Modelica.Electrical.Machines.Utilities.ParameterRecords.SM_PermanentMagnetData
     smpmData(useDamperCage=false) "Data for motor"
-    annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
+    annotation (Placement(transformation(extent={{-20,-90},{0,-70}})));
   Modelica.Blocks.Sources.Constant id(k=0)
     annotation (Placement(transformation(extent={{-90,60},{-70,80}})));
   Modelica.Blocks.Interfaces.RealInput iq_rms1 annotation (Placement(
@@ -132,34 +131,33 @@ model MotorWithCurrentControl
 equation
   connect(star.pin_n, ground.p) annotation (Line(points={{-30,90},{-40,90}}, color={0,0,255}));
   connect(rotorDisplacementAngle.plug_n, smpm.plug_sn) annotation (Line(
-        points={{26,-30},{26,-20},{-16,-20},{-16,-30}}, color={0,0,255}));
+        points={{36,-40},{36,-30},{-16,-30},{-16,-40}}, color={0,0,255}));
   connect(rotorDisplacementAngle.plug_p, smpm.plug_sp) annotation (Line(
-        points={{14,-30},{6,-30},{-4,-30}},
-                                    color={0,0,255}));
+        points={{24,-40},{-4,-40}}, color={0,0,255}));
   connect(terminalBox.plug_sn, smpm.plug_sn) annotation (Line(
-      points={{-16,-30},{-16,-30}},
+      points={{-16,-36},{-16,-40}},
       color={0,0,255}));
   connect(terminalBox.plug_sp, smpm.plug_sp) annotation (Line(
-      points={{-4,-30},{-4,-30}},
+      points={{-4,-36},{-4,-40}},
       color={0,0,255}));
   connect(smpm.flange, rotorDisplacementAngle.flange) annotation (Line(
-      points={{0,-40},{6,-40},{10,-40}}));
+      points={{0,-50},{20,-50}}));
   connect(signalCurrent.plug_p, star.plug_p) annotation (Line(
       points={{-10,60},{-10,90}},
       color={0,0,255}));
   connect(angleSensor.flange, rotorDisplacementAngle.flange) annotation (Line(
-      points={{10,-10},{10,-40}}));
+      points={{10,-10},{10,-50},{20,-50}}));
   connect(angleSensor.phi, currentController.phi) annotation (Line(
       points={{10,11},{10,30},{-40,30},{-40,38}},
       color={0,0,127}));
   connect(groundM.p, terminalBox.starpoint) annotation (Line(
-      points={{-70,-28},{-44,-28},{-19,-28}},
+      points={{-70,-28},{-70,-34},{-19,-34}},
       color={0,0,255}));
   connect(smpm.flange, torqueSensor.flange_a) annotation (Line(
-      points={{0,-40},{40,-40}}));
+      points={{0,-50},{10,-50},{10,-20},{40,-20}}));
   connect(voltageQuasiRMSSensor.plug_p, terminalBox.plugSupply) annotation (
       Line(
-      points={{-20,-10},{-10,-10},{-10,-28}},
+      points={{-20,-10},{-10,-10},{-10,-34}},
       color={0,0,255}));
   connect(starM.plug_p, voltageQuasiRMSSensor.plug_n) annotation (Line(
       points={{-50,-10},{-40,-10}},
@@ -171,16 +169,16 @@ equation
       points={{-29,50},{-24,50},{-17,50}},
       color={0,0,127}));
   connect(speedSensor.flange, smpm.flange) annotation (Line(
-      points={{30,-10},{30,-40},{0,-40}}));
+      points={{30,-12},{30,-20},{10,-20},{10,-50},{0,-50}}));
   connect(torqueSensor.flange_b, inertiaLoad.flange_a) annotation (Line(
-      points={{60,-40},{60,-40},{70,-40}}));
+      points={{60,-20},{70,-20}}));
   connect(signalCurrent.plug_n, currentQuasiRMSSensor.plug_p) annotation (
      Line(
-      points={{-10,40},{-10,10}},
+      points={{-10,40},{-10,20}},
       color={0,0,255}));
   connect(currentQuasiRMSSensor.plug_n, voltageQuasiRMSSensor.plug_p)
     annotation (Line(
-      points={{-10,-10},{-20,-10}},
+      points={{-10,0},{-10,-10},{-20,-10}},
       color={0,0,255}));
   connect(id.y, currentController.id_rms) annotation (Line(
       points={{-69,70},{-60,70},{-60,56},{-52,56}},
@@ -189,7 +187,7 @@ equation
       points={{-52,44},{-100,44},{-100,60},{-120,60}},
       color={0,0,127}));
   connect(inertiaLoad.flange_b, flange) annotation (Line(
-      points={{90,-40},{90,-40},{90,0},{100,0}}));
+      points={{90,-20},{90,0},{100,0}}));
   connect(angleSensor.phi, addNoise.u2) annotation (Line(
       points={{10,11},{10,30},{50,30},{50,74},{58,74}},
       color={0,0,127}));
@@ -199,10 +197,10 @@ equation
   connect(uniformNoise.y, addNoise.u1) annotation (Line(
       points={{47,86},{58,86}},
       color={0,0,127}));
-  connect(speedSensor.w, w) annotation (Line(points={{30,11},{30,11},{30,10},{70,
-          10}}, color={0,0,127}));
-  connect(angleSensor.phi, phi_motor) annotation (Line(points={{10,11},{10,11},{
-          10,22},{10,30},{70,30}},  color={0,0,127}));
+  connect(speedSensor.w, w) annotation (Line(points={{30,9},{30,10},{70,10}},
+                color={0,0,127}));
+  connect(angleSensor.phi, phi_motor) annotation (Line(points={{10,11},{10,30},{70,30}},
+                                    color={0,0,127}));
   annotation (
     Documentation(info="<html>
 <p>
