@@ -1,6 +1,6 @@
 **_The Modelica_Noise library is obsolete and will be maintained as part of the modelica standard library (from MSL version 3.2.2)._** 
 
-## If your tool supports MSL 3.2.2
+## If your tool supports MSL 3.2.2 or higher
 Use the noise models provided by the [Modelica Standard Library (MSL)](https://github.com/modelica/Modelica). This package is in this case not needed. 
 
 For more advanced noise models (more distributions, continuous, high performance noise), you might want to look at [AdvancedNoise](https://github.com/DLR-SR/AdvancedNoise).
